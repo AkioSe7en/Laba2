@@ -2,7 +2,7 @@
 
 using (ApplicationContext db = new ApplicationContext())
 {
-    var stocks = new List<Stock>
+    /*var stocks = new List<Stock>
     {
         new() { Town = "Бийск" },
         new() { Town = "Барнаул" },
@@ -16,5 +16,5 @@ using (ApplicationContext db = new ApplicationContext())
 
     db.Cars.AddRange(cars);
     db.Stocks.AddRange(stocks);
-    db.SaveChanges();
+    db.SaveChanges();*/
 }

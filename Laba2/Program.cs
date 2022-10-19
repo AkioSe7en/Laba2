@@ -18,13 +18,25 @@ using (ApplicationContext db = new ApplicationContext())
     db.Stocks.AddRange(stocks);
     db.SaveChanges();*/
 
-
+    // ЗАДАНИЕ 1 -----------------------------------------------------------------------------------------------------
     WriteLine("Задание 1. Alfa Romeo на складе.");
     var z1 = db.Cars.Where(p => p.Name == "Alfa Romeo").Where(p => p.IsStock == true).ToList();
     foreach (var z in z1)
     {
         WriteLine($"{z.Name} {z.Cost}$ В наличии:{z.IsStock}");
     }
+
+    WriteLine();
+
+    // ЗАДАНИЕ 2 -----------------------------------------------------------------------------------------------------
+    WriteLine("Задание 2. Склады, где есть BMW:");
+    var z2 = db.Cars.Where(p => p.Name.Contains("BMW")).Select(p => p.Stock).Distinct().ToList();
+    foreach (var z in z2)
+    {
+        WriteLine($"{z.Town}");
+    }
+
+    WriteLine();
 
     DbReport DBRep = new DbReport() { DateBase = db };
     DBRep.WriteAllReport();

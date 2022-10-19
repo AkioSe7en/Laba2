@@ -18,7 +18,13 @@ using (ApplicationContext db = new ApplicationContext())
     db.Stocks.AddRange(stocks);
     db.SaveChanges();*/
 
-    var cars = db.Cars.Include(p => p.Stock).ToList();
+
+    WriteLine("Задание 1. Alfa Romeo на складе.");
+    var z1 = db.Cars.Where(p => p.Name == "Alfa Romeo").Where(p => p.IsStock == true).ToList();
+    foreach (var z in z1)
+    {
+        WriteLine($"{z.Name} {z.Cost}$ В наличии:{z.IsStock}");
+    }
 
     DbReport DBRep = new DbReport() { DateBase = db };
     DBRep.WriteAllReport();

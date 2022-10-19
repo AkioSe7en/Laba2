@@ -38,6 +38,16 @@ using (ApplicationContext db = new ApplicationContext())
 
     WriteLine();
 
+    // ЗАДАНИЕ 3 -----------------------------------------------------------------------------------------------------
+    WriteLine("Задание 3. Машины дешевле 10000$:");
+    var z3 = db.Cars.Where(p => p.Cost < 10000).ToList();
+    foreach (var z in z3)
+    {
+        WriteLine($"{z.Name} {z.Cost}$ {z.DataRelease} года.");
+    }
+
+    WriteLine();
+
     DbReport DBRep = new DbReport() { DateBase = db };
     DBRep.WriteAllReport();
 }

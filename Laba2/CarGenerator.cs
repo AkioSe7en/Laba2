@@ -6,14 +6,14 @@ public static class CarGenerator
     {
         var rand = new Random();
 
-        var maxCarsCount = rand.Next(10, 50);
+        var maxCarsCount = rand.Next(30, 100);
 
         var cars = new List<Car>();
 
         for (var i = 0; i < maxCarsCount; i++)
         {
             var car = GenerateCar(stockList[rand.Next(0, stockList.Count)]);
-            cars.Add(car);    
+            cars.Add(car);
         }
 
         return cars;
@@ -22,12 +22,12 @@ public static class CarGenerator
     private static Car GenerateCar(Stock stock)
     {
         var rand = new Random();
-        
+
         var cost = 0;
         var remark = "";
-        var dateRelease = rand.Next(1988,2022);
+        var dateRelease = rand.Next(1988, 2022);
         var currentStock = stock;
-            
+
         switch (dateRelease)
         {
             case <= 2000:
@@ -47,7 +47,7 @@ public static class CarGenerator
                 cost = rand.Next(500000, 1500000);
                 break;
         }
-        
+
         return new Car()
         {
             Id = Guid.NewGuid(),

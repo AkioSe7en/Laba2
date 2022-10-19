@@ -18,10 +18,8 @@ using (ApplicationContext db = new ApplicationContext())
     db.Stocks.AddRange(stocks);
     db.SaveChanges();*/
 
-
     var cars = db.Cars.Include(p => p.Stock).ToList();
-    foreach (var VARIABLE in cars)
-    {
-        WriteLine($"{VARIABLE.Id} {VARIABLE.Name} {VARIABLE.Stock.Town}");
-    }
+
+    DbReport DBRep = new DbReport() { DateBase = db };
+    DBRep.WriteAllReport();
 }

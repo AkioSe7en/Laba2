@@ -81,6 +81,7 @@ using (ApplicationContext db = new ApplicationContext())
 
     WriteLine();
 
+    // ЗАДАНИЕ 7-8 ---------------------------------------------------------------------------------------------------
     DbReport DBRep = new DbReport() { DateBase = db };
     DBRep.WriteAllReport();
 }

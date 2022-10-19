@@ -1,6 +1,4 @@
 ﻿using Laba2;
-using Microsoft.EntityFrameworkCore;
-using static System.Console;
 
 using (ApplicationContext db = new ApplicationContext())
 {
@@ -19,6 +17,7 @@ using (ApplicationContext db = new ApplicationContext())
     db.Cars.AddRange(cars);
     db.Stocks.AddRange(stocks);
     db.SaveChanges();*/
+
 
     var cars = db.Cars.Include(p => p.Stock).ToList();
     foreach (var VARIABLE in cars)

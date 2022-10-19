@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-
-namespace Laba2;
+﻿namespace Laba2;
 
 public class ApplicationContext : DbContext
 {

@@ -2,6 +2,7 @@
 
 using (ApplicationContext db = new ApplicationContext())
 {
+    //----------------------------------------------------------------------------
     /*var stocks = new List<Stock>
     {
         new() { Town = "Бийск" },
@@ -17,13 +18,14 @@ using (ApplicationContext db = new ApplicationContext())
     db.Cars.AddRange(cars);
     db.Stocks.AddRange(stocks);
     db.SaveChanges();*/
+    //----------------------------------------------------------------------------
 
     // ЗАДАНИЕ 1 -----------------------------------------------------------------------------------------------------
     WriteLine("Задание 1. Alfa Romeo на складе.");
     var z1 = db.Cars.Where(p => p.Name == "Alfa Romeo").Where(p => p.IsStock == true).ToList();
     foreach (var z in z1)
     {
-        WriteLine($"{z.Name} {z.Cost}$ В наличии:{z.IsStock}");
+        WriteLine($"{z.Name} {z.Cost}$ ");
     }
 
     WriteLine();
@@ -44,6 +46,16 @@ using (ApplicationContext db = new ApplicationContext())
     foreach (var z in z3)
     {
         WriteLine($"{z.Name} {z.Cost}$ {z.DataRelease} года.");
+    }
+
+    WriteLine();
+
+    // ЗАДАНИЕ 4 -----------------------------------------------------------------------------------------------------
+    WriteLine("Задание 4. Машины с пометкой:");
+    var z4 = db.Cars.Where(p => p.Remark != "").OrderBy(p => p.Name).ToList();
+    foreach (var z in z4)
+    {
+        WriteLine($"{z.Name} {z.Cost}$ {z.DataRelease} года. Пометка: {z.Remark}");
     }
 
     WriteLine();

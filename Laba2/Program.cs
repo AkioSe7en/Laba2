@@ -60,6 +60,17 @@ using (ApplicationContext db = new ApplicationContext())
 
     WriteLine();
 
+    // ЗАДАНИЕ 5 -----------------------------------------------------------------------------------------------------
+    WriteLine("Задание 5. Склады с машинами 2000-2005 г:");
+    var z5 = db.Cars.Where(p => p.DataRelease >= 2000 && p.DataRelease <= 2005).GroupBy(c => c.Stock.Town)
+        .Select(g => new { Name = g.Key, Count = g.Count() }).ToList();
+    foreach (var z in z5)
+    {
+        WriteLine(z.Name + " " + z.Count);
+    }
+
+    WriteLine();
+
     // ЗАДАНИЕ 6 -----------------------------------------------------------------------------------------------------
     WriteLine("Задание 6. Машины до 2000 года:");
     var z6 = db.Cars.Where(p => p.DataRelease < 2000).OrderBy(p => p.DataRelease).ToList();

@@ -8,6 +8,7 @@ public class DbReport
     {
         string path =
             $"Report/{DateTime.Now.Day:00}.{DateTime.Now.Month:00}.{DateTime.Now.Year} {DateTime.Now.Hour:00}-{DateTime.Now.Minute:00}-{DateTime.Now.Second:00} AllCars.txt";
+        Directory.CreateDirectory("Report");
         File.Create(path).Close();
         var Report = DateBase.Cars.Include(p => p.Stock).ToList();
         foreach (var z in Report)

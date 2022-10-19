@@ -60,6 +60,16 @@ using (ApplicationContext db = new ApplicationContext())
 
     WriteLine();
 
+    // ЗАДАНИЕ 6 -----------------------------------------------------------------------------------------------------
+    WriteLine("Задание 6. Машины до 2000 года:");
+    var z6 = db.Cars.Where(p => p.DataRelease < 2000).OrderBy(p => p.DataRelease).ToList();
+    foreach (var z in z6)
+    {
+        WriteLine($"{z.Name} {z.Cost}$ {z.DataRelease} года");
+    }
+
+    WriteLine();
+
     DbReport DBRep = new DbReport() { DateBase = db };
     DBRep.WriteAllReport();
 }
